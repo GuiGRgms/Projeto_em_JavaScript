@@ -1,0 +1,1 @@
+alert('não e difil fazer no js?');

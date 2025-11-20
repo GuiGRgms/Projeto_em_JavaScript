@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Investimento e Controle de Gastos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de Navegação no topo -->
+    <header class="navbar">
+        <div class="navbar-logo">Minha Simulação</div>
+        <div class="navbar-buttons">
+            <button id="modeInvestment" onclick="switchMode('investment')">Investimento</button>
+            <button id="modeBudget" onclick="switchMode('budget')">Controle de Gastos</button>
+        </div>
+    </header>
+
+    <div class="calculator">
+        <!-- Modo Investimento -->
+        <div id="investmentMode" class="mode">
+            <h1>Simulação de Investimento</h1>
+
+            <label for="investmentPeriod">Período da Simulação (Anos):</label>
+            <input type="number" id="investmentPeriod" placeholder="Digite o período em anos" required>
+            <button onclick="convertYearsToMonths()">Converter em Meses</button>
+            <label for="initialValue">Valor Inicial (R$):</label>
+            <input type="number" id="initialValue" placeholder="Digite o valor inicial" required>
+
+            <label for="monthlyContribution">Aporte Mensal (R$):</label>
+            <input type="number" id="monthlyContribution" placeholder="Digite o valor do aporte mensal" required>
+
+            <label for="interestRate">Taxa de Juros (%):</label>
+            <input type="number" id="interestRate" placeholder="Digite a taxa de juros anual" required>
+
+            <label>
+                <input type="checkbox" id="includeTaxAndInflation"> Incluir Impostos e Inflação
+            </label>
+
+            <button onclick="simulateInvestment()">Simular Investimento</button>
+        </div>
+
+        <!-- Modo Controle de Gastos -->
+        <div id="budgetMode" class="mode" style="display: none;">
+            <h1>Controle de Gastos</h1>
+            <label for="income">Renda Mensal (R$):</label>
+            <input type="number" id="income" placeholder="Digite sua renda mensal" required>
+
+            <label for="expense">Despesa Mensal (R$):</label>
+            <input type="number" id="expense" placeholder="Digite o valor das despesas" required>
+            <button onclick="addExpense()">Adicionar Despesa</button>
+
+            <label for="incomeEntry">Receita Mensal (R$):</label>
+            <input type="number" id="incomeEntry" placeholder="Digite o valor das receitas" required>
+            <button onclick="addIncome()">Adicionar Receita</button>
+
+            <h4>Resumo de Gastos</h4>
+            <ul id="expenseList"></ul>
+
+            <h4>Resumo de Receitas</h4>
+            <ul id="incomeList"></ul>
+
+            <button onclick="calculateBudget()">Calcular Saldo</button>
+        </div>
+
+        <h2>Detalhamento</h2>
+        <table id="details" style="width:100%; margin-top: 20px; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Valor (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de resultados irão aparecer aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
